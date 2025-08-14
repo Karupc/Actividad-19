@@ -13,3 +13,12 @@ class Galleta:
         self.peso = peso
     def mostrar_info(self):
         return f"Galleta: {self.nombre} | Precio: Q{self.precio:.2f} | Peso: {self.peso}g"
+class GalletaChispas(Galleta):
+    def __init__(self, nombre, precio, peso, cantidad_chispas):
+        super().__init__(nombre, precio, peso)
+        if cantidad_chispas < 0:
+            raise ValueError("La cantidad de chispas no puede ser negativa.")
+        self.cantidad_chispas = cantidad_chispas
+
+    def mostrar_info(self):
+        return super().mostrar_info() + f" | Chispas: {self.cantidad_chispas}"
