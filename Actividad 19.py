@@ -32,3 +32,17 @@ class GalletaRellena(Galleta, Relleno):
         Relleno.__init__(self, sabor_relleno)
     def mostrar_info(self):
         return super().mostrar_info() + f" | {self.describir_relleno()}"
+nventario = []
+def buscar_galleta(nombre):
+    return next((g for g in inventario if g.nombre.lower() == nombre.lower()), None)
+def menu():
+    while True:
+        print("\n--- MENÚ GALLETAS ---")
+        print("1.- Registrar galleta básica")
+        print("2.- Registrar galleta con chispas")
+        print("3.- Registrar galleta rellena")
+        print("4.- Listar galletas")
+        print("5.- Buscar por nombre")
+        print("6.- Eliminar por nombre")
+        print("7.- Salir")
+        opcion = input("Seleccione opción: ")
