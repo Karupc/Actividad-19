@@ -19,6 +19,16 @@ class GalletaChispas(Galleta):
         if cantidad_chispas < 0:
             raise ValueError("La cantidad de chispas no puede ser negativa.")
         self.cantidad_chispas = cantidad_chispas
-
     def mostrar_info(self):
         return super().mostrar_info() + f" | Chispas: {self.cantidad_chispas}"
+class Relleno:
+    def __init__(self, sabor_relleno):
+        self.sabor_relleno = sabor_relleno
+    def describir_relleno(self):
+        return f"Relleno de {self.sabor_relleno}"
+class GalletaRellena(Galleta, Relleno):
+    def __init__(self, nombre, precio, peso, sabor_relleno):
+        Galleta.__init__(self, nombre, precio, peso)
+        Relleno.__init__(self, sabor_relleno)
+    def mostrar_info(self):
+        return super().mostrar_info() + f" | {self.describir_relleno()}"
