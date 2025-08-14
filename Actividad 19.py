@@ -46,3 +46,17 @@ def menu():
         print("6.- Eliminar por nombre")
         print("7.- Salir")
         opcion = input("Seleccione opción: ")
+        match opcion:
+            case "1":
+                try:
+                    nombre = input("Nombre: ")
+                    if buscar_galleta(nombre):
+                        raise RegistroDuplicadoError("Ya existe una galleta con ese nombre.")
+                    precio = float(input("Precio: "))
+                    peso = float(input("Peso (g): "))
+                    inventario.append(Galleta(nombre, precio, peso))
+                    print("Galleta registrada.")
+                except ValueError as e:
+                    print(f"Error: {e}")
+                except RegistroDuplicadoError as e:
+                    print(f"Error: {e}")
