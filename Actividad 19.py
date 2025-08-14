@@ -60,3 +60,17 @@ def menu():
                     print(f"Error: {e}")
                 except RegistroDuplicadoError as e:
                     print(f"Error: {e}")
+            case "2":
+                try:
+                    nombre = input("Nombre: ")
+                    if buscar_galleta(nombre):
+                        raise RegistroDuplicadoError("Ya existe una galleta con ese nombre.")
+                    precio = float(input("Precio: "))
+                    peso = float(input("Peso (g): "))
+                    chispas = int(input("Cantidad de chispas: "))
+                    inventario.append(GalletaChispas(nombre, precio, peso, chispas))
+                    print("Galleta con chispas registrada.")
+                except ValueError as e:
+                    print(f"Error: {e}")
+                except RegistroDuplicadoError as e:
+                    print(f"Error: {e}")
