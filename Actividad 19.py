@@ -74,3 +74,17 @@ def menu():
                     print(f"Error: {e}")
                 except RegistroDuplicadoError as e:
                     print(f"Error: {e}")
+            case "3":
+                try:
+                    nombre = input("Nombre: ")
+                    if buscar_galleta(nombre):
+                        raise RegistroDuplicadoError("Ya existe una galleta con ese nombre.")
+                    precio = float(input("Precio: "))
+                    peso = float(input("Peso (g): "))
+                    sabor = input("Sabor del relleno: ")
+                    inventario.append(GalletaRellena(nombre, precio, peso, sabor))
+                    print("Galleta rellena registrada.")
+                except ValueError as e:
+                    print(f"Error: {e}")
+                except RegistroDuplicadoError as e:
+                    print(f"Error: {e}")
