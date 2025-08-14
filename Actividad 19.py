@@ -32,7 +32,7 @@ class GalletaRellena(Galleta, Relleno):
         Relleno.__init__(self, sabor_relleno)
     def mostrar_info(self):
         return super().mostrar_info() + f" | {self.describir_relleno()}"
-nventario = []
+inventario = []
 def buscar_galleta(nombre):
     return next((g for g in inventario if g.nombre.lower() == nombre.lower()), None)
 def menu():
@@ -88,3 +88,27 @@ def menu():
                     print(f"Error: {e}")
                 except RegistroDuplicadoError as e:
                     print(f"Error: {e}")
+            case "4":
+                if inventario:
+                    for g in inventario:
+                        print(g.mostrar_info())
+                else:
+                    print("No hay galletas registradas.")
+            case "5":
+                nombre = input("Nombre a buscar: ")
+                g = buscar_galleta(nombre)
+                print(g.mostrar_info() if g else "No encontrada.")
+            case "6":
+                nombre = input("Nombre a eliminar: ")
+                g = buscar_galleta(nombre)
+                if g:
+                    inventario.remove(g)
+                    print("Galleta eliminada.")
+                else:
+                    print("No encontrada.")
+            case "7":
+                print("Saliendo del programa...")
+                break
+            case _:
+                print("Opción inválida.")
+        menu()
